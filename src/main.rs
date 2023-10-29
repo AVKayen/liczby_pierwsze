@@ -63,7 +63,7 @@ fn naive_all_but_even_to_sqrti(n: usize) -> usize {
     return c
 }
 
-// 3.
+// 4.
 fn eratosthenes(n: usize) -> usize {
     let mut c: usize = 0;
     let mut vec: Vec<bool> = vec![true; n];
@@ -87,7 +87,7 @@ fn eratosthenes(n: usize) -> usize {
     return c
 }
 
-// 4.
+// 5.
 fn atkin(n: usize) -> usize {
     let mut c: usize = 0;
     let mut vec: Vec<bool> = vec![false; n+1];
@@ -138,13 +138,29 @@ fn atkin(n: usize) -> usize {
 
     return c
 }
+
 fn main() {
-    let n: [usize; 4] = [1000, 10000, 100000];
+    let n: [usize; 4] = [1000, 10000, 100000, 1000000];
     for i in n {
         let now = Instant::now();
-        naive_all_smaller(i);
+        atkin(i);
         let elapsed = now.elapsed();
-        println!("Metoda 1 dla n={} zajęła {} mikrosekund czasu procesora", i, elapsed.as_micros());
+        println!("Metoda sita atkina dla n={} zajęła {} mikrosekund czasu procesora", i, elapsed.as_micros());
+
+        let now = Instant::now();
+        eratosthenes(i);
+        let elapsed = now.elapsed();
+        println!("Metoda sita erastotenesa dla n={} zajęła {} mikrosekund czasu procesora", i, elapsed.as_micros());
+        
+
+        let now = Instant::now();
+        naive_all_but_even_to_sqrti(i);
+        let elapsed = now.elapsed();
+        println!("Metoda 3 dla n={} zajęła {} mikrosekund czasu procesora", i, elapsed.as_micros());
+
+        if i == n[3] {
+            println!("Ctrl+C aby anulować proces, to będzie się chwilkę mieliło :D")
+        }
 
         let now = Instant::now();
         naive_all_but_even(i);
@@ -152,18 +168,8 @@ fn main() {
         println!("Metoda 2 dla n={} zajęła {} mikrosekund czasu procesora", i, elapsed.as_micros());
 
         let now = Instant::now();
-        naive_all_but_even_to_sqrti(i);
+        naive_all_smaller(i);
         let elapsed = now.elapsed();
-        println!("Metoda 3 dla n={} zajęła {} mikrosekund czasu procesora", i, elapsed.as_micros());
-
-        let now = Instant::now();
-        eratosthenes(i);
-        let elapsed = now.elapsed();
-        println!("Metoda 4 dla n={} zajęła {} mikrosekund czasu procesora", i, elapsed.as_micros());
-        
-        let now = Instant::now();
-        atkin(i);
-        let elapsed = now.elapsed();
-        println!("Metoda 5 dla n={} zajęła {} mikrosekund czasu procesora\n", i, elapsed.as_micros());
+        println!("Metoda 1 dla n={} zajęła {} mikrosekund czasu procesora\n", i, elapsed.as_micros());
     }
 }
