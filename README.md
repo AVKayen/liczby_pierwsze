@@ -1,9 +1,9 @@
 ## Metody Znajdowania Ilości Liczb Pierwszych w zbiorze $\mathbb N$ od $1$ do $n$
 Definicja: 
-$\mathbb P = \{ p \in \mathbb N \; | \; \text{p jest liczbą pierwszą}\}$
+$\mathbb P = \\{ p \in \mathbb N \\; | \\; \text{p jest liczbą pierwszą}\\}$
 
 ### Metoda 1 (Naiwna):
-Algorytm sprawdza w pętli, czy $k\%i = 0$, gdzie $i\in\mathbb N\cap\{2, k\}, k\in\{1, n\}$
+Algorytm sprawdza w pętli, czy $k\\%i = 0$, gdzie $i\in\mathbb N\cap\\{2, k\\}, k\in\\{1, n\\}$
 
 ```rust
 let mut c: usize = 0;
@@ -23,7 +23,7 @@ return c
 ```
 
 ### Metoda 2 (Naiwna z pominięciem liczb parzystych):
-Algorytm sprawdza w pętli, czy $k\%i = 0$,  gdzie $i\in\mathbb N\cap\{3, k\}, i\%2=1$. Pomija on wszystkie liczby parzyste, automatycznie ignorując je ($2k\notin\mathbb P$)
+Algorytm sprawdza w pętli, czy $k\\%i = 0$,  gdzie $i\in\mathbb N\cap\\{3, k\\}, i\\%2=1$. Pomija on wszystkie liczby parzyste, automatycznie ignorując je ($2k\notin\mathbb P$)
 
 ```rust
 let mut c: usize = 1;
@@ -46,7 +46,7 @@ return c
 ```
 
 ### Metoda 3 (Naiwna z pominięciem liczb parzystych oraz $i\geqslant\sqrt{k}$):
-Algorytm sprawdza w pętli, czy $k\%i = 0$,  gdzie $i\in\mathbb N\cap\{3, \sqrt{k}\}, i\%2=1$. Pomija on wszystkie liczby parzyste, automatycznie ignorując je ($2k\notin\mathbb P$). Pomija on dodatkowo wszystkie $i\geqslant\sqrt{k}$, gdyż nie mogą one być dzielnikami $k$
+Algorytm sprawdza w pętli, czy $k\\%i = 0$,  gdzie $i\in\mathbb N\cap\\{3, \sqrt{k}\\}, i\\%2=1$. Pomija on wszystkie liczby parzyste, automatycznie ignorując je ($2k\notin\mathbb P$). Pomija on dodatkowo wszystkie $i\geqslant\sqrt{k}$, gdyż nie mogą one być dzielnikami $k$
 
 ```rust
 let mut c: usize = 1;
