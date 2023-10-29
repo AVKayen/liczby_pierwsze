@@ -3,8 +3,8 @@ use std::time::{Instant, Duration};
 
 // 1.
 fn naive_all_smaller(n: usize) -> usize {
-    let mut c: usize = 3;
-    for i in 6..=n {
+    let mut c: usize = 0;
+    for i in 2..=n {
         let mut s: bool = true;
         for j in 2..i {
             if i%j == 0 {
@@ -21,8 +21,8 @@ fn naive_all_smaller(n: usize) -> usize {
 
 // 2.
 fn naive_all_but_even(n: usize) -> usize {
-    let mut c: usize = 3;
-    for i in 6..=n {
+    let mut c: usize = 1;
+    for i in 3..=n {
         let mut s: bool = true;
         if i%2 == 0 {
             continue;
@@ -91,7 +91,6 @@ fn eratosthenes(n: usize) -> usize {
 fn atkin(n: usize) -> usize {
     let mut c: usize = 0;
     let mut vec: Vec<bool> = vec![false; n+1];
-    let mut j: usize = 6;
     vec[2] = true;
     vec[3] = true;
 
